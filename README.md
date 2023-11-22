@@ -1,4 +1,4 @@
-EthStorage will launch a developer bounty program to incentivize everyone to apply their acquired zk knowledge to solve real-world problems related to zk fraud proof based on [zkGo](https://github.com/ethstorage/go/tree/zkGo) and [zkWasm](https://github.com/ethstorage/zkWasm/tree/dev). Each prize accepts up to two teams, and  each accepted team will be rewarded **$1,000 USD**, with a development period of approximately two weeks. Currently, there are two main grants as follows:
+EthStorage will launch a developer bounty program to incentivize everyone to apply their acquired zk knowledge to solve real-world problems related to zk fraud proof based on [zkGo](https://github.com/ethstorage/go/tree/zkGo) and [zkWasm](https://github.com/ethstorage/zkWasm/tree/dev). Each prize accepts up to two teams, and  each accepted team will be rewarded at least **$1,000 USD**, with a development period of approximately two weeks. Currently, there are two main grants as follows:
 
 # Grant 1
 
