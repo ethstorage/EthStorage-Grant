@@ -19,9 +19,10 @@ This track primarily focuses on benchmarking wasm performance on[ Risc0’s ZKVM
 ## Hardware Requirements
 * 4 cores, 128 GB RAM. We can provide a test machine if needed.
 
-## Timeline
-* Application Deadline: November 30, 2023, at 24:00 (UTC+8)
+## Timeline & Contact
+* Application Deadline: November 30, 2023, at 24:00 (UTC+8).
 * Submission Deadline: Submissions are expected within 2 weeks from the acceptance of your application.
+* Please refer to the [Contact](#contact) section to reach us and apply.
 
 ## Resources for Grant 1
 * [Video: What is zkGo and how to use it [CN]](https://www.youtube.com/watch?v=272hvhwYP4U (CN))
@@ -50,9 +51,10 @@ This track is dedicated to enhancing [zkGo](https://github.com/ethstorage/go/tre
 * Please submit your repository containing all relevant code and documentation.
 
 
-## Timeline
+## Timeline & Contact
 * Application Deadline: November 30, 2023, at 24:00 (UTC+8).
 * Submission Deadline: Submissions are expected within 2 weeks from the acceptance of your application.
+* Please refer to the [Contact](#contact) section to reach us and apply.
 
 ## Resources for Grant 2
 * [Video: What is zkGo and how to use it [CN]](https://www.youtube.com/watch?v=272hvhwYP4U (CN))
