@@ -58,7 +58,7 @@ This track is dedicated to enhancing [zkGo](https://github.com/ethstorage/go/tre
 
 ## Resources for Grant 2
 * [Video: What is zkGo and how to use it [CN]](https://www.youtube.com/watch?v=272hvhwYP4U (CN))
-* [How to build op-program-client and do zkWasm dry_run](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md#op-program-zkwasm)
+* [How to build op-program-client and do zkWasm dry_run](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md#op-program-zkwasm). If there is error when running `replay`, please download the [`preimages-test.bin`](./preimages-test.bin) directly, put it into the `/bin/` folder and skip the `replay` step
 * [zkWasm command line](https://github.com/ethstorage/zkWasm/tree/dev#command-line)
 
 # Contact
