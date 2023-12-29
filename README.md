@@ -63,3 +63,16 @@ This track is dedicated to enhancing [zkGo](https://github.com/ethstorage/go/tre
 
 # Contact
 The application process is straightforward. If you're interested in participating in this bounty program competition, kindly send an email to **[chenjunfeng@ethstorage.io](mailto:chenjunfeng@ethstorage.io)** with the subject line 'Your name: EthStorage Grant 1(or 2) Application'. In the email, describe your background and reasons for your interest in this program. Please include your WeChat account at the end of the email for contact purposes. The final selected candidates will be announced by December 2, 2023, at 24:00 (UTC+8).
+
+# Grant award announcement
+| Track   | Team         |                 |    Score        |              |                 | Reward($) | Repo |
+|---------|--------------|-----------------|-----------------|--------------|-----------------|-----------|------|
+|         |              | Completion Rate | Reproducibility | Presentation | Composite Score |           |      |
+| Grant 1 | Apus Network | ★★★           | ★★             | ★★★         | ★★★           | 1000      | [Link](https://github.com/Akagi201/zkvm-benchmark) |
+|         | Paul         | ★★             | ★★★           | ★★           | ★★☆           | 1000      | [Link](https://github.com/ChengYueJia/EthStorage-Grant/tree/feat/grant-1)    |
+|         | Akagi        | ★★             | ★              | ★★★         | ★★             | 700       | [Link](https://github.com/Akagi201/zkvm-benchmark)     |
+|         | He Li        | ★              | ★               |              | ★              | 200       | [Link](https://github.com/lidashu/EthStorage-Grant/tree/feature/lidashu)     |
+| Grant 2 | Bill         | ★★★           | ★★★           | ★★           | ★★★           | 1000      | [Link](https://hackmd.io/@billzkp/HyuPgN4LT)     |
+|         | Nuttt        | ☆              |                 |               |                 | 100      |      |
+
+
