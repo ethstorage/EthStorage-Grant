@@ -1,0 +1,13 @@
+[submodule "zkWasm"]
+	path = zkWasm
+	url = https://github.com/DelphinusLab/zkWasm.git
+	branch = merge-dry-run
+[submodule "risc0"]
+	path = risc0
+	url = https://github.com/risc0/risc0.git
+	branch = v0.19.1
+[submodule "go"]
+	path = go
+	url = https://github.com/ethstorage/go.git
+	branch = zkGo
+

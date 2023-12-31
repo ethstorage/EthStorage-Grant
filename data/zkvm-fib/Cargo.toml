@@ -1,0 +1,13 @@
+[package]
+name = "fib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+risc0-zkvm = { path = "../../risc0/risc0/zkvm" }
+fib-methods = { path = "methods" }
+
+[features]
+cuda = ["risc0-zkvm/cuda"]
+default = []
+metal = ["risc0-zkvm/metal"]

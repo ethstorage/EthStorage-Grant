@@ -1,0 +1,13 @@
+[package]
+name = "fib-interp"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+risc0-zkvm = { path = "../../../../risc0/risc0/zkvm", default-features = false, features = [
+    "std",
+] }
+num-bigint = { version = "0.4" }
+num-traits = { version = "0.2" }

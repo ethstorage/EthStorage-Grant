@@ -1,0 +1,25 @@
+(module
+    (func $fib (param $n i32) (result i32)
+        (local $last i32)
+        (local $curr i32)
+        (local $buff i32)
+        (local.set $last (i32.const 1))
+        (local.set $curr (i32.const 1))
+        (block
+            (loop
+                (br_if 1 (i32.le_s (local.get $n) (i32.const 2)))
+                (local.set $buff (i32.add (local.get $last) (local.get $curr)))
+                (local.set $last (local.get $curr))
+                (local.set $curr (local.get $buff))
+                (local.set $n (i32.sub (local.get $n) (i32.const 1)))
+                (br 0)
+            )
+        )
+        (local.get $curr)
+    )
+  (func (export "zkmain") (result i32)
+    (local $n i32)
+    (local.set $n (i32.const 10))  ;;n of fib
+    (call $fib (local.get $n))
+  )
+)

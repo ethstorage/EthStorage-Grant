@@ -1,78 +1,88 @@
-EthStorage will launch a developer bounty program to incentivize everyone to apply their acquired zk knowledge to solve real-world problems related to zk fraud proof based on [zkGo](https://github.com/ethstorage/go/tree/zkGo) and [zkWasm](https://github.com/ethstorage/zkWasm/tree/dev). Each prize accepts up to two teams, and  each accepted team will be rewarded at least **$1,000 USD**, with a development period of approximately two weeks. Currently, there are two main grants as follows:
+# EthStorage-Grant
+Metrics specification:
+- Risc0: Risc0 instructions typically consist of 1-2 cycles each. The `total cycles` logged in the stdout might be misleading as it refers to `segment_cycles`, which actually measures the entirety of cycles in the guest program's execution trace. It's worth noting that segment_cycles needs adjustment by **subtracting 1<<20**, as Risc0's default implementation inadvertently adds an extra segment.
+- zkWasm: Cycles are measured by total wasm instructions.
 
-# Grant 1
+## timing profile
+> zkWasm OS: Mem: 512G	 AMD Ryzen Threadripper PRO 5975WX 32-Cores, GPU: 4090*2, Cuda 12.2
+> Risc0  OS: Mem: 128G	 AMD Ryzen 9 7950X 16-Core Processor,	GPU: 4090, Cuda 12.2
 
-## Summary
-This track primarily focuses on benchmarking wasm performance on[ Risc0’s ZKVM](https://github.com/risc0/risc0/tree/main) and[ Delphinuslab’s zkWasm](https://github.com/ethstorage/zkWasm/tree/dev). The benchmark program required for this task is a Go Fibonacci program, designed to calculate the N-th Fibonacci number (N = 100,000 ). The specific target benchmark program is [fib_go.go](https://github.com/ethstorage/go/blob/zkGo/zkgo_examples/fib/fib_go.go).
+* N=900
 
-## Objective
-1. **Create a summary table** detailing the time required for two specific operations—dry_run (simply running the wasm binary) and  (optionally) generating a witness (producing the necessary witness to fill in the circuit)—on both zkVMs. Please note that the program's current size prevents it from being proven at once, necessitating chunking and continuation to achieve a full proof. This aspect is actively under development, and thus, we will defer benchmarking for full proof to a future iteration.
-2. Share insights and experience from using these tools and **prepare a talk on this topic.**
+| Metrics              | cycles           | dry_run(s) | gen_witness(s) | gen_proof(s) | e2e(s)       | 
+|----------------------|------------------|------------|----------------|--------------|--------------|
+| zkWasm(raw_wasm) CPU | 369891           | -          | -              | 362          |              | 
+| zkWasm(raw_wasm) GPU | Same as above    | -          | -              | 31.3         | -            | 
+| zkWasm(zkgo/wasm) CPU| >> 1M            | pending    | -              | -            | -            | 
+| zkWasm(zkgo/wasm) GPU| Same as above    | pending    | -              | -            | -            | 
+| rics0(raw_wasm)      | 24867989         | -          | -              | -            |              | 
+| rics0(raw_wasm) GPU  | Same as above    | -          | -              |              |              |
+| rics0(riscv)         | 236397           | -          |                | 22.0         |              | 
+| rics0(riscv) GPU     | Same as above    | -          | -              | 6.0          |              | 
+| rics0(zkgo/wasm)     | >> 1M            | time out   | -              |              |              | 
+| rics0(zkgo/wasm) GPU | Same as above    | time out   | -              |              |              | 
+| rics0(zkgo/riscv)    | Unsupported      | -          | -              |              |              | 
+| rics0(zkgo/riscv) GPU| Same as above    | -          | -              |              |              | 
 
-## Details
-* Compile the wasm binary using [zkGo](https://github.com/ethstorage/go/tree/zkGo).
-* Utilize the `dry_run` option in zkWasm's command line. Investigate how to perform this action in Risc0.
-* Comprehensive documentation must accompany the implementation.
-* Relevant resources are available in the [Resources](#resources-for-grant-1) section.
-* Please submit your repository containing all relevant code and documentation.
+* N=1800
 
-## Hardware Requirements
-* 4 cores, 128 GB RAM. We can provide a test machine if needed.
+| Metrics              | cycles           | dry_run(s) | gen_witness(s) | gen_proof(s) | e2e(s)       | 
+|----------------------|------------------|------------|----------------|--------------|--------------|
+| zkWasm(raw_wasm) CPU | 1019334          | -          | -              | >> 60        |              | 
+| zkWasm(raw_wasm) GPU | Same as above    | -          | -              | 38.2         | -            | 
+| zkWasm(zkgo/wasm) CPU| >> 1M            | pending    | -              | -            | -            | 
+| zkWasm(zkgo/wasm) GPU| Same as above    | pending    | -              | -            | -            | 
+| rics0(raw_wasm)      | 24867989         | -          | -              | _            |              | 
+| rics0(raw_wasm) GPU  | Same as above    | -          | -              |              |              |
+| rics0(riscv)         | 681145           | -          |                | 80.7         |              | 
+| rics0(riscv) GPU     | Same as above    | -          | -              | 12.0         |              | 
+| rics0(zkgo/wasm)     | >> 1M            | time out   | -              |              |              | 
+| rics0(zkgo/wasm) GPU | Same as above    | time out   | -              |              |              | 
+| rics0(zkgo/riscv)    | Unsupported      | -          | -              |              |              | 
+| rics0(zkgo/riscv) GPU| Same as above    | -          | -              |              |              | 
 
-## Timeline & Contact
-* Application Deadline: November 30, 2023, at 24:00 (UTC+8).
-* Submission Deadline: Submissions are expected within 2 weeks from the acceptance of your application.
-* Please refer to the [Contact](#contact) section to reach us and apply.
+## Structure
 
-## Resources for Grant 1
-* [Video: What is zkGo and how to use it [CN]](https://www.youtube.com/watch?v=272hvhwYP4U (CN))
-* [How to build op-program-client and do zkWasm dry_run](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md#op-program-zkwasm)
-* [Risc0’s wasm example](https://github.com/risc0/risc0/blob/main/examples/wasm/README.md)
-* [zkWasm command line](https://github.com/ethstorage/zkWasm/tree/dev#command-line)
+### bin
+All the binary file (cli tools and generated wasm files) will gather here in `./bin` directory.
 
-
-# Grant 2
-
-## Summary
-This track is dedicated to enhancing [zkGo](https://github.com/ethstorage/go/tree/zkGo) and [zkWasm ](https://github.com/DelphinusLab/zkWasm)optimization by incorporating a **customized keccak256 circuit**. Within our [zkWasm-based zk fraud proof](https://ethstorage.medium.com/advancing-towards-zk-fraud-proof-zkgo-compiling-l2-geth-into-zk-compatible-wasm-a03319bec935), `keccak256` serves as a key component, currently implemented using Golang and compiled into wasm opcodes. However, this implementation is not zk-friendly and imposes significant overhead on zkWasm circuits. Our aim is to substitute Golang's `keccak256` with its zkWasm host circuit.
-
-
-## Objective
-1. Evaluate the prover cost benchmark by comparing the performance of the `keccak256` wasm binary compiled via a Rust program against the utilization of zkWasm's native host circuit. Summarize the findings in a table detailing circuit rows, proving time, and related metrics.
-2. Integrate zkWasm's `keccak256` host circuit with the <code>[op-program-client](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md#op-program-zkwasm)</code>. Provide a unit test ensuring identical <code>keccak256</code> hash results between Golang and zkWasm host functions, demonstrating the correctness of the implementation.
-3. Compare the time costs between two implementations of the op-program client (specifically, the smoke_test) for two operations—dry_run (executing the wasm binary) and (optionally) generating a witness (generating the necessary witness for the circuit)—on zkWasm.
-
-## Details
-* Utilize the `keccak256` Rust implementation from [this repository](https://github.com/taikoxyz/zkevm-circuits/blob/main/keccak256/src/keccak_arith.rs).
-* Use zkWasm's host circuit in this [pull request](https://github.com/DelphinusLab/zkWasm-host-circuits/pull/70).
-* Replace the `keccak256` function in Golang using go build hints. Here is [an example](https://github.com/ethstorage/go/blob/ec275ab21658df61b73bc070640c41f8a391f18a/zkgo_examples/fib/fib_zkgo.go#L7).
-* Refer to [this documentation](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md) for guidance on building the op-program client and executing the smoke_test.
-* Other relevant resources can be accessed in the [Resources](#resources-for-grant-2) section.
-* Please submit your repository containing all relevant code and documentation.
+### data
+All the generated benchmark cases are store in the `./data` directory.
 
 
-## Timeline & Contact
-* Application Deadline: November 30, 2023, at 24:00 (UTC+8).
-* Submission Deadline: Submissions are expected within 2 weeks from the acceptance of your application.
-* Please refer to the [Contact](#contact) section to reach us and apply.
+## How to run:
+* prepare enviroment and pull submodule
+```bash
+make prepare
+make pull
+```
+> change FIB_N in the following bash files to change benchmark's number of instructions
 
-## Resources for Grant 2
-* [Video: What is zkGo and how to use it [CN]](https://www.youtube.com/watch?v=272hvhwYP4U (CN))
-* [How to build op-program-client and do zkWasm dry_run](https://github.com/ethstorage/optimism/blob/js-io/op-program/README.md#op-program-zkwasm). If there is error when running `replay`, please download the [`preimages-test.bin`](./preimages-test.bin) directly, put it into the `/bin/` folder and skip the `replay` step
-* [zkWasm command line](https://github.com/ethstorage/zkWasm/tree/dev#command-line)
+* profile fib_rs in zkWasm 
+```bash
+bash scripts/zkwasm_fibrs.sh
+```
 
-# Contact
-The application process is straightforward. If you're interested in participating in this bounty program competition, kindly send an email to **[chenjunfeng@ethstorage.io](mailto:chenjunfeng@ethstorage.io)** with the subject line 'Your name: EthStorage Grant 1(or 2) Application'. In the email, describe your background and reasons for your interest in this program. Please include your WeChat account at the end of the email for contact purposes. The final selected candidates will be announced by December 2, 2023, at 24:00 (UTC+8).
+* profile fib_zkgo in zkWasm 
+```bash
+bash scripts/zkwasm_fibgo.sh
+```
 
-# Grant award announcement
-| Track   | Team         |                 |    Score        |              |                 | Reward($) | Repo |
-|---------|--------------|-----------------|-----------------|--------------|-----------------|-----------|------|
-|         |              | Completion Rate | Reproducibility | Presentation | Composite Score |           |      |
-| Grant 1 | Apus Network | ★★★           | ★★             | ★★★         | ★★★           | 1000      | [Link](https://github.com/Akagi201/zkvm-benchmark) |
-|         | Paul         | ★★             | ★★★           | ★★           | ★★☆           | 1000      | [Link](https://github.com/ChengYueJia/EthStorage-Grant/tree/feat/grant-1)    |
-|         | Akagi        | ★★             | ★              | ★★★         | ★★             | 700       | [Link](https://github.com/Akagi201/zkvm-benchmark)     |
-|         | He Li        | ★              | ★               |              | ★              | 200       | [Link](https://github.com/lidashu/EthStorage-Grant/tree/feature/lidashu)     |
-| Grant 2 | Bill         | ★★★           | ★★★           | ★★           | ★★★           | 1000      | [Link](https://hackmd.io/@billzkp/HyuPgN4LT)     |
-|         | Nuttt        | ☆              |                 |               |                 | 100      |      |
+* profile fib_rs compiled to riscv in Risc0 
+```bash
+bash scripts/risc0_fibrs_riscv.sh
+```
 
-- [Grant 1 final results and repo](https://github.com/ethstorage/EthStorage-Grant-1/tree/feat/grant-1). Credits to @Apus network, @Paul, @Akagi 
+* profile fib_rs compiled to wasm, then interpreted with wasmi, then compiled to riscv in Risc0 
+```bash
+bash scripts/risc0_fibrs_wasmi2riscv.sh
+```
+
+* profile fib_go compiled to wasm, then interpreted with wasmi, then compiled to riscv in Risc0 
+```bash
+bash scripts/risc0_fibgo_wasmi2riscv
+```
+
+
+## Reference
+https://github.com/ethstorage/Ethstorage-Grant
