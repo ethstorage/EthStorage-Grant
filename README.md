@@ -3,8 +3,11 @@ Metrics specification:
 - Risc0: Risc0 instructions typically consist of 1-2 cycles each. The `total cycles` logged in the stdout might be misleading as it refers to `segment_cycles`, which actually measures the entirety of cycles in the guest program's execution trace. It's worth noting that segment_cycles needs adjustment by **subtracting 1<<20**, as Risc0's default implementation inadvertently adds an extra segment.
 - zkWasm: Cycles are measured by total wasm instructions.
 
+> Notice: Risc0 excels in handling i32 instructions, but zkWasm's strength lies in advanced instructions, particularly those related to u128 commonly used in DeFi applications. As the current benchmark solely focuses on i32, its scope is limited. A comprehensive comparison would require the inclusion of diverse instruction scenarios in future benchmarks to effectively evaluate their relative performances.
+
 ## timing profile
 > zkWasm OS: Mem: 512G	 AMD Ryzen Threadripper PRO 5975WX 32-Cores, GPU: 4090*2, Cuda 12.2
+
 > Risc0  OS: Mem: 128G	 AMD Ryzen 9 7950X 16-Core Processor,	GPU: 4090, Cuda 12.2
 
 * N=900
