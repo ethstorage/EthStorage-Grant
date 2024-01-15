@@ -75,4 +75,5 @@ The application process is straightforward. If you're interested in participatin
 | Grant 2 | Bill         | ★★★           | ★★★           | ★★           | ★★★           | 1000      | [Link](https://hackmd.io/@billzkp/HyuPgN4LT)     |
 |         | Nuttt        | ☆              |                 |               |                 | 100      |      |
 
+## Final results
 - [Grant 1 final results and repo](https://github.com/ethstorage/EthStorage-Grant/tree/zk/grant-1). Credits to @Apus network, @Paul, @Akagi 
