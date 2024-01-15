@@ -68,7 +68,7 @@ The application process is straightforward. If you're interested in participatin
 | Track   | Team         |                 |    Score        |              |                 | Reward($) | Repo |
 |---------|--------------|-----------------|-----------------|--------------|-----------------|-----------|------|
 |         |              | Completion Rate | Reproducibility | Presentation | Composite Score |           |      |
-| Grant 1 | Apus Network | ★★★           | ★★             | ★★★         | ★★★           | 1000      | [Link](https://github.com/Akagi201/zkvm-benchmark) |
+| Grant 1 | Apus Network | ★★★           | ★★             | ★★★         | ★★★           | 1000      | [Link]([https://github.com/Akagi201/zkvm-benchmark](https://github.com/apuslabs/ethstorage-zkvm-zkwasm-fib-benchmark)) |
 |         | Paul         | ★★             | ★★★           | ★★           | ★★☆           | 1000      | [Link](https://github.com/ChengYueJia/EthStorage-Grant/tree/feat/grant-1)    |
 |         | Akagi        | ★★             | ★              | ★★★         | ★★             | 700       | [Link](https://github.com/Akagi201/zkvm-benchmark)     |
 |         | He Li        | ★              | ★               |              | ★              | 200       | [Link](https://github.com/lidashu/EthStorage-Grant/tree/feature/lidashu)     |
