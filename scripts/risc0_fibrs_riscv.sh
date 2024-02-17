@@ -18,8 +18,6 @@ else
 fi
 
 cd $RISC0
-git reset --hard v0.19.1
-git pull
 
 # 1. check and install risc0 toolchain
 echo -e "\n==check risc0 toolchain"
