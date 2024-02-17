@@ -3,12 +3,12 @@
 PWD=${PWD}
 RISC0=${PWD}/risc0/
 
-FIB_N=900
+FIB_N=2
 # raw, rust fib wasm
 SCRIPT_DIR=${PWD}/data/zkvm-fib
 RS_FIB=${PWD}/bin/rs_fib
 RS_FIB_CUDA=${PWD}/bin/rs_fib_cuda
-
+RISC0_VERSION=0.19.1
 cuda_enabled=0
 if command -v nvcc >/dev/null 2>&1; then
     echo "nvcc installed"
@@ -18,8 +18,7 @@ else
 fi
 
 cd $RISC0
-#git reset --hard v0.19.1
-git checkout feat/eths-grant-1
+git reset --hard v0.19.1
 git pull
 
 # 1. check and install risc0 toolchain
@@ -30,7 +29,7 @@ result=$(ls ~/.cargo/bin | grep cargo-risczero)
 if [ -z "$result" ]; then
     echo "Start install risczero toolchain"
     cargo install cargo-binstall
-    cargo binstall cargo-risczero
+    cargo binstall cargo-risczero@$RISC0_VERSION
     cargo risczero install
 else
     echo "Already install risczero toolchain"

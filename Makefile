@@ -18,7 +18,7 @@ prepare: ## libs and tools on ubuntu
 	@sudo apt install pkg-config
 	@curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sudo sh
 	@cargo install cargo-binstall
-	@cargo binstall cargo-risczero
+	@cargo binstall cargo-risczero@0.19.1
 	@cargo risczero install
 
 

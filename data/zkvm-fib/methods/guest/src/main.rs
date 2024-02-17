@@ -24,17 +24,16 @@ use risc0_zkvm::guest::env;
 pub fn main() {
     let iterations: u32 = env::read();
     let answer = fibonacci(iterations);
-    env::commit(&answer[0]);
+    env::commit(&answer);
 }
 
-pub fn fibonacci(n: u32) -> Vec<u64> {
-    let mut f0: BigUint = Zero::zero();
-    let mut f1: BigUint = One::one();
+pub fn fibonacci(n: u32) -> u64 {
+    let mut f0 = 1u64;
+    let mut f1 = 1u64;
     for _ in 0..n {
         let f2 = f0 + &f1;
         f0 = f1;
         f1 = f2;
     }
-    let mod_result = f0 % BigUint::from(1u64 << 32);
-    mod_result.to_u64_digits()
+    f1
 }
